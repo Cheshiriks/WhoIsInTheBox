@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4c6b13158ffe44e03b8294c8993ec051
+guid: c1e74b2624a6d4d4883916965f967515
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1773047348507569232
-    second: Room (1)_0
+      213: 8738237609059982279
+    second: Box2 (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +97,33 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -113,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Room (1)_0
+      name: Box2 (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 3840
-        height: 1536
+        x: 54
+        y: 58
+        width: 409
+        height: 379
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 05cedb16b212b9810800000000000000
-      internalID: 1773047348507569232
+      spriteID: 7cb9afaeec4744970800000000000000
+      internalID: 8738237609059982279
       vertices: []
       indices: 
       edges: []
@@ -148,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Room (1)_0: 1773047348507569232
+      Box2 (1)_0: 8738237609059982279
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
