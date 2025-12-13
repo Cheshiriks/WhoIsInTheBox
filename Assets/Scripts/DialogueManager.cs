@@ -2,72 +2,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    [TextArea(2, 6)]
-    public List<string> dialogueLines;  // Добавь реплики в инспекторе
-    public TextMeshProUGUI dialogueText;
-    public float typingSpeed = 0.03f;
+    [SerializeField] private TMP_Text text;
+    [SerializeField] private BoxEmotionFX boxFx;
+    [SerializeField] private List<DialogueLine> lines;
+    [SerializeField] private float charDelay = 0.04f;
 
-    private int currentLineIndex = 0;
-    private bool isTyping = false;
-    private Coroutine typingCoroutine;
+    private int index;
+    private Coroutine typing;
+    private bool isTyping;
+    private string currentLine;
+    public bool IsTyping => isTyping;
 
-    void Start()
+    private void Start()
     {
-        dialogueText.text = "123";
-        StartDialogue();
+        index = SaveGame.Instance.dialogueIndex;
+        
+        var line = lines[index];
+        boxFx.SetMood(line.mood);
+        currentLine = line.text;
+        
+        typing = StartCoroutine(Type());
+        
+        index++;
+        if (index >= lines.Count)
+            index = lines.Count - 1;
+    }
+    
+    public void Next()
+    {
+        SaveGame.Instance.SaveDialogueIndex(index);
+
+        var line = lines[index];
+        index++;
+
+        if (index >= lines.Count)
+            index = lines.Count - 1;
+        
+        boxFx.SetMood(line.mood);
+        currentLine = line.text;
+
+        typing = StartCoroutine(Type());
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (isTyping)
-            {
-                // Прерываем печать и сразу показываем всю строку
-                StopCoroutine(typingCoroutine);
-                dialogueText.text = dialogueLines[currentLineIndex];
-                isTyping = false;
-            }
-            else
-            {
-                ShowNextLine();
-            }
-        }
-    }
-
-    public void StartDialogue()
-    {
-        currentLineIndex = 0;
-        ShowNextLine();
-    }
-
-    void ShowNextLine()
-    {
-        if (currentLineIndex < dialogueLines.Count)
-        {
-            typingCoroutine = StartCoroutine(TypeLine(dialogueLines[currentLineIndex]));
-            currentLineIndex++;
-        }
-        else
-        {
-            dialogueText.text = "";
-            // Диалог окончен — можно вызвать событие, скрыть UI и т.п.
-        }
-    }
-
-    IEnumerator TypeLine(string line)
+    private IEnumerator Type()
     {
         isTyping = true;
-        dialogueText.text = "";
-        foreach (char c in line.ToCharArray())
+        text.text = "";
+
+        foreach (char c in currentLine)
         {
-            dialogueText.text += c;
-            yield return new WaitForSeconds(typingSpeed);
+            text.text += c;
+            yield return new WaitForSeconds(charDelay);
         }
+
         isTyping = false;
+        typing = null;
+    }
+
+    private void FinishInstant()
+    {
+        if (typing != null)
+            StopCoroutine(typing);
+
+        text.text = currentLine;
+        isTyping = false;
+        typing = null;
     }
 }
