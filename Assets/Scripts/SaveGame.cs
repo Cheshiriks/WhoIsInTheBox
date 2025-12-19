@@ -1,10 +1,13 @@
 using UnityEngine;
+using YG;
 
 public class SaveGame : MonoBehaviour
 {
     public static SaveGame Instance;
 
     public int dialogueIndex = 0;
+    public string lang = "ru";
+    public string domain = "ru";
     
     private void Awake()
     {
@@ -14,13 +17,15 @@ public class SaveGame : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Instance = this;
             //LoadDate();
+            lang = YG2.envir.language;
+            domain = YG2.envir.domain;
         }
         else
         {
             Destroy(gameObject);
         }
     }
-    
+
     public void SaveDialogueIndex(int index)
     {
         dialogueIndex = index;

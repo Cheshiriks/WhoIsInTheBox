@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
         
         var line = lines[index];
         boxFx.SetMood(line.mood);
-        currentLine = line.text;
+        currentLine = line.textRu;
         
         typing = StartCoroutine(Type());
         
@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviour
             index = lines.Count - 1;
         
         boxFx.SetMood(line.mood);
-        currentLine = line.text;
+        currentLine = line.textRu;
 
         typing = StartCoroutine(Type());
     }
