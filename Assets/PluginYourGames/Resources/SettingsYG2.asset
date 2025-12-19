@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa747916aa66674d96ea40ca8a480b2, type: 3}
   m_Name: SettingsYG2
   m_EditorClassIdentifier: Assembly-CSharp::YG.InfoYG
+  InterstitialAdv:
+    showFirstAdv: 1
+    interAdvInterval: 70
+    postponeCallByFail: 1
+    postponeCallTimer: 70
+    labelAdvSimLabel: 0
   Basic:
     platform: {fileID: 11400000, guid: fabe82a4ab034324eb452cc7109f6d19, type: 2}
     autoApplySettings: 1
@@ -24,13 +30,13 @@ MonoBehaviour:
     loadSceneIfSDKLate: 0
     loadSceneIndex: 0
     initDelaySimulation: 0
-    buildNumber: 0
+    buildNumber: 1
   Simulation:
-    device: 0
+    device: 1
     language: ru
-    advIntervalSimulation: 60
-    durationAdv: 0.5
-    loadAdv: 0
+    advIntervalSimulation: 12
+    durationAdv: 1
+    loadAdv: 3
     testFailAds: 0
   Templates:
     logoImageFormat: 0
@@ -65,6 +71,9 @@ MonoBehaviour:
   platformInfo:
     ownHost: 0
   platformToggles:
+    showFirstAdv: 1
+    interAdvInterval: 1
+    postponeCallByFail: 0
     autoPauseGame: 0
     selectWebGLTemplate: 1
     runInBackground: 1
