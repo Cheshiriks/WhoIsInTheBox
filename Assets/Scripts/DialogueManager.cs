@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private BoxEmotionFX boxFx;
     [SerializeField] private List<DialogueLine> lines;
     [SerializeField] private float charDelay = 0.04f;
+    
+    [SerializeField] private AudioSource typeWriterSource;
 
     private int index;
     private Coroutine typing;
@@ -29,6 +31,11 @@ public class DialogueManager : MonoBehaviour
         index++;
         if (index >= lines.Count)
             index = lines.Count - 1;
+    }
+    
+    private void OnDisable()
+    {
+        StopTypeSound();
     }
     
     public void Next()
@@ -52,11 +59,15 @@ public class DialogueManager : MonoBehaviour
         isTyping = true;
         text.text = "";
 
+        StartTypeSound();
+        
         foreach (char c in currentLine)
         {
             text.text += c;
             yield return new WaitForSeconds(charDelay);
         }
+        
+        StopTypeSound();
 
         isTyping = false;
         typing = null;
@@ -66,9 +77,34 @@ public class DialogueManager : MonoBehaviour
     {
         if (typing != null)
             StopCoroutine(typing);
+        
+        StopTypeSound();
 
         text.text = currentLine;
         isTyping = false;
         typing = null;
+    }
+    
+    private void StartTypeSound()
+    {
+        if (!typeWriterSource) return;
+
+        typeWriterSource.loop = true;
+
+        // ▶ старт с 1-й секунды
+        typeWriterSource.time = 1f;
+
+        if (!typeWriterSource.isPlaying)
+            typeWriterSource.Play();
+    }
+
+    private void StopTypeSound()
+    {
+        if (!typeWriterSource) return;
+
+        if (typeWriterSource.isPlaying)
+            typeWriterSource.Stop();
+
+        typeWriterSource.loop = false;
     }
 }
