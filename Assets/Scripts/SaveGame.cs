@@ -26,6 +26,11 @@ public class SaveGame : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        YG2.InterstitialAdvShow();
+    }
+
     public void SaveDialogueIndex(int index)
     {
         dialogueIndex = index;
