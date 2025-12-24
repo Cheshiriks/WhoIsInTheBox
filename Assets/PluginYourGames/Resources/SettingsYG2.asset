@@ -30,7 +30,7 @@ MonoBehaviour:
     loadSceneIfSDKLate: 0
     loadSceneIndex: 0
     initDelaySimulation: 0
-    buildNumber: 3
+    buildNumber: 4
   Simulation:
     device: 1
     language: ru
