@@ -95,8 +95,6 @@ public class DialogueManager : MonoBehaviour
         }
         
         currentLine = SaveGame.Instance.lang == "ru" ? line.textRu : line.textEn;
-
-        Debug.Log(index);
         
         CheckChangeScene(index);
 
@@ -108,7 +106,7 @@ public class DialogueManager : MonoBehaviour
         isTyping = true;
         text.text = "";
 
-        StartTypeSound();
+        //StartTypeSound();
         
         foreach (char c in currentLine)
         {
@@ -116,7 +114,7 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(charDelay);
         }
         
-        StopTypeSound();
+        //StopTypeSound();
 
         isTyping = false;
         typing = null;
