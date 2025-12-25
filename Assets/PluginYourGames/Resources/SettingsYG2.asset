@@ -36,7 +36,7 @@ MonoBehaviour:
     language: ru
     advIntervalSimulation: 70
     durationAdv: 1
-    loadAdv: 3
+    loadAdv: 0
     testFailAds: 0
   Templates:
     logoImageFormat: 1
