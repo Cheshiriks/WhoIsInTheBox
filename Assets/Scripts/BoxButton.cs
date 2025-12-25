@@ -52,6 +52,8 @@ public class BoxButton : MonoBehaviour,
         if (dialogue != null && dialogue.IsTyping)
             return; // <-- клики не фиксируются
         
+        AdsManager.Instance.TryShowInterstitial();
+        
         OnBoxClicked?.Invoke();
     }
 }
