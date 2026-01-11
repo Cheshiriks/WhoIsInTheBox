@@ -27,6 +27,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject eyes;
     [SerializeField] private GameObject smile;
     
+    [SerializeField] private CatchBallsController catchBalls;
+    [SerializeField] private ChoiceUI choiceUI;
+    
     private SpriteRenderer _bgImage;
     private Image _boxImage;
     
@@ -69,7 +72,7 @@ public class DialogueManager : MonoBehaviour
     public void Next()
     {
         SaveGame.Instance.SaveDialogueIndex(index);
-
+        
         var line = lines[index];
         index++;
         
@@ -99,6 +102,22 @@ public class DialogueManager : MonoBehaviour
         CheckChangeScene(index);
 
         typing = StartCoroutine(Type());
+
+        CheckInteraction();
+    }
+
+    private void CheckInteraction()
+    {
+        if (index == 20)
+        {
+            StartCatchBallsInteraction();
+            return;
+        }
+        
+        if (index == 4 || index == 10)
+        {
+            ShowYesNo();
+        }
     }
 
     private IEnumerator Type()
@@ -298,5 +317,24 @@ public class DialogueManager : MonoBehaviour
                 StartCoroutine(FadeInCoroutine(_smileImage));
             }
         }
+    }
+    
+    private void StartCatchBallsInteraction()
+    {
+        GameFlow.State = GameState.Interaction;
+        catchBalls.StartInteraction();
+    }
+    
+    private void ShowYesNo()
+    {
+        GameFlow.State = GameState.Interaction;
+        
+        Debug.Log("Yes");
+        choiceUI.Show( yes =>
+        {
+            GameFlow.State = GameState.Dialogue;
+
+            Next();
+        });
     }
 }
