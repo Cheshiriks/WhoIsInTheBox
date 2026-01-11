@@ -1,3 +1,3 @@
-﻿Build path: /Users/vladislav/Desktop/build/WhoIsInTheBox/WhoIsInTheBoxV7
-Build number: 6
+﻿Build path: /Users/vladislav/Desktop/build/WhoIsInTheBox/WhoIsInTheBoxV8
+Build number: 7
 PluginYG version: 2.007

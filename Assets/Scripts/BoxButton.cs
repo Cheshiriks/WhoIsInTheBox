@@ -37,6 +37,9 @@ public class BoxButton : MonoBehaviour,
     {
         if (dialogue != null && dialogue.IsTyping) return;
         
+        if (GameFlow.State != GameState.Dialogue)
+            return;
+        
         targetScale = normalScale * pressedScale;
     }
 
@@ -44,13 +47,19 @@ public class BoxButton : MonoBehaviour,
     {
         if (dialogue != null && dialogue.IsTyping) return;
         
+        if (GameFlow.State != GameState.Dialogue)
+            return;
+        
         targetScale = normalScale;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (GameFlow.State != GameState.Dialogue)
+            return;
+        
         if (dialogue != null && dialogue.IsTyping)
-            return; // <-- клики не фиксируются
+            return;
         
         AdsManager.Instance.TryShowInterstitial();
         

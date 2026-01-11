@@ -16,7 +16,7 @@ public class SaveGame : MonoBehaviour
             transform.parent = null;
             DontDestroyOnLoad(gameObject);
             Instance = this;
-            LoadDate();
+            //LoadDate();
             lang = YG2.envir.language;
             domain = YG2.envir.domain;
         }
