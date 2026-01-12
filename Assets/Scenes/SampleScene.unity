@@ -5855,6 +5855,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceUI
   panel: {fileID: 671592726}
+  textYes: {fileID: 1968960811}
+  textNo: {fileID: 2061466117}
   yesButton: {fileID: 696895818}
   noButton: {fileID: 520498929}
 --- !u!1 &680672911
@@ -6197,6 +6199,97 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156425426}
   m_CullTransparentMesh: 1
+--- !u!1 &1184128802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1184128806}
+  - component: {fileID: 1184128805}
+  - component: {fileID: 1184128804}
+  - component: {fileID: 1184128803}
+  m_Layer: 5
+  m_Name: Book
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1184128803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184128802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47952e6c10cd495a91a1992b1cfab22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookController
+  img: {fileID: 1184128804}
+  fadeInDuration: 1
+  fadeOutDuration: 0.2
+--- !u!114 &1184128804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184128802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 7115369033525605651, guid: 5683967da587e4195ab0302e8876201a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1184128805
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184128802}
+  m_CullTransparentMesh: 1
+--- !u!224 &1184128806
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184128802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1648476252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 500, y: -400}
+  m_SizeDelta: {x: 226, y: 234}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1262909823
 GameObject:
   m_ObjectHideFlags: 0
@@ -6919,6 +7012,7 @@ RectTransform:
   m_Children:
   - {fileID: 1262909824}
   - {fileID: 671592727}
+  - {fileID: 1184128806}
   m_Father: {fileID: 336177979}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7360,10 +7454,24 @@ MonoBehaviour:
       \u0432\u0441\u0435\u043B\u044F\u0442\u044C \u0441\u0442\u0440\u0430\u0445"
     textEn: You don't have to be big to be scary
     mood: 0
-  - textRu: "\u041D\u043E \u0440\u0430\u0437 \u0443\u0436 \u0442\u044B \u0442\u0443\u0442,
-      \u0442\u043E \u0441\u043E\u0441\u0442\u0430\u0432\u044C \u043C\u043D\u0435
-      \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u044E"
-    textEn: But since you're here, come keep me company
+  - textRu: "\u0418 \u044F \u043F\u043E\u043A\u0430\u0436\u0443 \u0442\u0435\u0431\u0435
+      \u0441\u0432\u043E\u0435 \u043C\u043E\u0433\u0443\u0449\u0435\u0441\u0442\u0432\u043E!"
+    textEn: And I will show you my power!
+    mood: 0
+  - textRu: "\u0423\u0437\u0440\u0438 \u043E\u0433\u043D\u0435\u043D\u043D\u044B\u0435
+      \u0448\u0430\u0440\u044B!"
+    textEn: Behold the fireballs!
+    mood: 0
+  - textRu: "\u0421\u043C\u043E\u0436\u0435\u0448\u044C \u043B\u0438 \u0442\u044B
+      \u0438\u0445 \u0432\u0441\u0435 \u043F\u043E\u0442\u0443\u0448\u0438\u0442\u044C?"
+    textEn: Can you put them all out?
+    mood: 0
+  - textRu: "\u0422\u044B \u0441\u043C\u043E\u0433 \u043C\u0435\u043D\u044F \u0443\u0434\u0438\u0432\u0438\u0442\u044C!"
+    textEn: You managed to surprise me!
+    mood: 0
+  - textRu: "\u0420\u0430\u0437 \u0443\u0436 \u0442\u044B \u0442\u0443\u0442, \u0442\u043E
+      \u0441\u043E\u0441\u0442\u0430\u0432\u044C \u043C\u043D\u0435 \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u044E"
+    textEn: Since you're here, come join me.
     mood: 5
   - textRu: "\u0417\u0430 \u0441\u0442\u043E\u043B\u044C\u043A\u043E \u043B\u0435\u0442
       \u043F\u0440\u043E\u0432\u0435\u0434\u0435\u043D\u043D\u044B\u0445 \u0432 \u0437\u0430\u043F\u0435\u0440\u0442\u043E\u0439
@@ -7430,9 +7538,9 @@ MonoBehaviour:
   - textRu: "\u041C\u0435\u043D\u044F \u0437\u043E\u0432\u0443\u0442 \u0410\u044E\u043D\u0441"
     textEn: My name is Ayuns
     mood: 0
-  - textRu: "\u041F\u043E\u0447\u0435\u043C\u0443 \u0442\u0430\u043A\u043E\u0435
-      \u0438\u043C\u044F?"
-    textEn: Why such a name?
+  - textRu: "\u0421\u043F\u0440\u0430\u0448\u0438\u0432\u0430\u0435\u0448\u044C \u043F\u043E\u0447\u0435\u043C\u0443
+      \u0442\u0430\u043A\u043E\u0435 \u0438\u043C\u044F?"
+    textEn: You ask why such a name?
     mood: 0
   - textRu: "\u0410 \u0440\u0430\u0437\u0432\u0435 \u043C\u044B \u0432\u044B\u0431\u0438\u0440\u0430\u0435\u043C
       \u0441\u0435\u0431\u0435 \u0438\u043C\u0435\u043D\u0430?"
@@ -7525,6 +7633,31 @@ MonoBehaviour:
       \u0434\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0445 \u0440\u0430\u0437\u0432\u043B\u0435\u0447\u0435\u043D\u0438\u0439"
     textEn: But when you're locked in a box, you don't have a lot of entertainment
       available
+    mood: 0
+  - textRu: "\u041A\u0441\u0442\u0430\u0442\u0438, \u043F\u0435\u0440\u0435\u0434
+      \u0441\u0432\u043E\u0438\u043C \u0438\u0441\u0447\u0435\u0437\u043D\u043E\u0432\u0435\u043D\u0438\u0435\u043C
+      \u043E\u043D \u0437\u0430\u0431\u044B\u043B \u0442\u0443\u0442 \u043A\u0430\u043A\u0443\u044E-\u0442\u043E
+      \u043A\u043D\u0438\u0433\u0443"
+    textEn: By the way, before his disappearance he forgot some book here
+    mood: 0
+  - textRu: "\u042F \u043D\u0435\u043C\u043D\u043E\u0433\u043E \u0437\u0430\u043C\u0435\u043D\u0438\u043B
+      \u0435\u0439 \u043E\u0431\u043B\u043E\u0436\u043A\u0443 \u043D\u0430 \u043C\u043E\u0439
+      \u0432\u043A\u0443\u0441"
+    textEn: I changed the cover a little to suit my taste
+    mood: 0
+  - textRu: "\u041D\u043E \u0431\u043E\u043B\u044C\u0448\u0435 \u043D\u0438\u0447\u0435\u0433\u043E
+      \u0432 \u043D\u0435\u0439 \u043D\u0435 \u0442\u0440\u043E\u0433\u0430\u043B"
+    textEn: But I didn't change anything else in it
+    mood: 0
+  - textRu: "\u0415\u0441\u043B\u0438 \u0441\u043C\u043E\u0436\u0435\u0448\u044C
+      \u0435\u0435 \u0442\u0443\u0442 \u043D\u0430\u0439\u0442\u0438 - \u043E\u043D\u0430
+      \u0442\u0432\u043E\u044F"
+    textEn: If you can find her here, she's yours
+    mood: 0
+  - textRu: "\u0410 \u0442\u044B \u0432\u043D\u0438\u043C\u0430\u0442\u0435\u043B\u0435\u043D,
+      \u043D\u0430\u0434\u0435\u044E\u0441\u044C \u043E\u043D\u0430 \u0442\u0435\u0431\u0435
+      \u043F\u0440\u0438\u0433\u043E\u0434\u0438\u0442\u0441\u044F"
+    textEn: And you are attentive, I hope it will be useful to you.
     mood: 0
   - textRu: "\u0427\u0442\u043E? \u0422\u044B \u0445\u043E\u0447\u0435\u0448\u044C
       \u0437\u043D\u0430\u0442\u044C, \u043A\u0430\u043A \u044F \u0432\u044B\u0433\u043B\u044F\u0436\u0443?"
@@ -8093,6 +8226,7 @@ MonoBehaviour:
   eyes: {fileID: 1468864432}
   smile: {fileID: 135285373}
   catchBalls: {fileID: 520547144}
+  bookImage: {fileID: 1184128803}
   choiceUI: {fileID: 671592728}
 --- !u!4 &1801195401
 Transform:
@@ -8248,7 +8382,7 @@ GameObject:
   - component: {fileID: 1968960812}
   - component: {fileID: 1968960811}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TextYes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8476,7 +8610,7 @@ GameObject:
   - component: {fileID: 2061466118}
   - component: {fileID: 2061466117}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TextNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

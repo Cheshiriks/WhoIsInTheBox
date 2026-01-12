@@ -1,10 +1,13 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ChoiceUI : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
+    [SerializeField] private TMP_Text textYes;
+    [SerializeField] private TMP_Text textNo;
     [SerializeField] private Button yesButton;
     [SerializeField] private Button noButton;
 
@@ -13,6 +16,9 @@ public class ChoiceUI : MonoBehaviour
     private void Awake()
     {
         if (!panel) panel = gameObject;
+        
+        textYes.text = SaveGame.Instance.lang == "ru" ? "ДА" : "YES";
+        textNo.text = SaveGame.Instance.lang == "ru" ? "НЕТ" : "NO";
 
         yesButton.onClick.AddListener(() => Choose(true));
         noButton.onClick.AddListener(() => Choose(false));

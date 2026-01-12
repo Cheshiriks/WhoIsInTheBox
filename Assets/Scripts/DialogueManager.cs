@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject smile;
     
     [SerializeField] private CatchBallsController catchBalls;
+    [SerializeField] private BookController bookImage;
     [SerializeField] private ChoiceUI choiceUI;
     
     private SpriteRenderer _bgImage;
@@ -82,16 +83,16 @@ public class DialogueManager : MonoBehaviour
             NewGame();
         }
         
-        if (index <= 168)
+        if (index <= 177)
         {
             boxFx.SetMood(line.mood);
         }
-        else if (index <= 177)
+        else if (index <= 186)
         {
             StartCoroutine(FadeCoroutine(_bgImage, rgbStep));
             StartCoroutine(FadeCoroutine(_boxImage, rgbStep));
         }
-        else if (index <= 182)
+        else if (index <= 191)
         {
             StartCoroutine(FadeCoroutine(_bgImage, rgbStep2));
             StartCoroutine(FadeCoroutine(_boxImage, rgbStep2));
@@ -108,13 +109,19 @@ public class DialogueManager : MonoBehaviour
 
     private void CheckInteraction()
     {
-        if (index == 20)
+        if (index == 17)
         {
             StartCatchBallsInteraction();
             return;
         }
         
-        if (index == 4 || index == 10)
+        if (index == 62)
+        {
+            ShowRevealImage();
+            return;
+        }
+        
+        if (index == 5 || index == 10 || index == 38 || index == 64 || index == 92)
         {
             ShowYesNo();
         }
@@ -176,20 +183,20 @@ public class DialogueManager : MonoBehaviour
 
     private void CheckChangeScene(int index)
     {
-        if (index == 169)
+        if (index == 178)
         {
             _fair2.SetActive(false);
         }
-        if (index == 173) 
+        if (index == 182) 
         {
             _fair1.SetActive(false);
         }
-        if (index == 184) 
+        if (index == 193) 
         {
             eyes.SetActive(true);
             StartCoroutine(FadeInCoroutine(_eyesImage));
         }
-        if (index == 187) 
+        if (index == 196) 
         {
             smile.SetActive(true);
             StartCoroutine(FadeInCoroutine(_smileImage));
@@ -283,35 +290,35 @@ public class DialogueManager : MonoBehaviour
 
     private void LoadGame(int index)
     {
-        if (index >= 168)
+        if (index >= 177)
         {
             _fair2.SetActive(false);
         }
-        if (index >= 172) 
+        if (index >= 181) 
         {
             _fair1.SetActive(false);
         }
-        if (index >= 177 && index <= 181)
+        if (index >= 186 && index <= 190)
         {
-            int step = 90 + (index-176)*33;
+            int step = 90 + (index-185)*33;
             StartCoroutine(FadeCoroutine(_bgImage, step));
             StartCoroutine(FadeCoroutine(_boxImage, step));
         }
-        else if (index >= 168 && index < 177)
+        else if (index >= 177 && index < 186)
         {
             StartCoroutine(FadeCoroutine(_bgImage, rgbStep*(index-167)));
             StartCoroutine(FadeCoroutine(_boxImage, rgbStep*(index-167)));
         }
-        else if (index > 181)
+        else if (index > 190)
         {
             StartCoroutine(FadeCoroutine(_bgImage, 255));
             StartCoroutine(FadeCoroutine(_boxImage, 255));
-            if (index >= 183)
+            if (index >= 192)
             {
                 eyes.SetActive(true);
                 StartCoroutine(FadeInCoroutine(_eyesImage));
             }
-            if (index >= 186)
+            if (index >= 195)
             {
                 smile.SetActive(true);
                 StartCoroutine(FadeInCoroutine(_smileImage));
@@ -329,12 +336,22 @@ public class DialogueManager : MonoBehaviour
     {
         GameFlow.State = GameState.Interaction;
         
-        Debug.Log("Yes");
         choiceUI.Show( yes =>
         {
             GameFlow.State = GameState.Dialogue;
 
             Next();
+        });
+    }
+    
+    private void ShowRevealImage()
+    {
+        GameFlow.State = GameState.Interaction; // блокируем коробку
+
+        bookImage.Show(() =>
+        {
+            GameFlow.State = GameState.Dialogue; // возвращаем коробку
+            Next(); // продолжаем диалог
         });
     }
 }
